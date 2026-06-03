@@ -6,7 +6,7 @@ import requests
 cnx = st.connection("snowflake")
 
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
+
 
 # Write directly to the app
 st.header(f":cup_with_straw: Customize Your Smoothie! :cup_with_straw:",text_alignment="center")
@@ -38,3 +38,6 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
     
+
+# st.text(smoothiefroot_response.json())
+st_df = st.dataframe(data=smoothiefroot_response.json(),use_container_width = True)
