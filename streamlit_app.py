@@ -46,6 +46,7 @@ if ingredients_list:
         if search_on in sf_df['name'].values:
             smoothiefroot_response = sf_df.loc[sf_df['name'] == search_on].loc[0].to_dict()
             st_df = st.dataframe(data=smoothiefroot_response,use_container_width = True)
+            del smoothiefroot_response
         else:
             st.write('Nutrition Information not found')
 
