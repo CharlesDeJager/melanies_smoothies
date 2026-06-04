@@ -10,6 +10,8 @@ cnx = st.connection("snowflake")
 smoothiefroot_data = requests.get(
     f"https://my.smoothiefroot.com/api/fruit/all")
 sf_df = pd.DataFrame(smoothiefroot_data.json())
+st.dataframe(sf_df)
+st.stop()
 
 
 # Write directly to the app
