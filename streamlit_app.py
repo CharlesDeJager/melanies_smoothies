@@ -10,8 +10,8 @@ cnx = st.connection("snowflake")
 smoothiefroot_data = requests.get(
     f"https://my.smoothiefroot.com/api/fruit/all")
 sf_df = pd.DataFrame(smoothiefroot_data.json())
-st.dataframe(sf_df)
-st.stop()
+# st.dataframe(sf_df)
+# st.stop()
 
 
 # Write directly to the app
@@ -43,8 +43,6 @@ if ingredients_list:
         st.subheader(fruit_chosen + ' Nutrition Information')
         # smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         smoothiefroot_response = sf_df.loc[sf_df['name'] == search_on].iloc[0]
-        st.dataframe(smoothiefroot_response.to_json())
-        st.stop
         st_df = st.dataframe(data=smoothiefroot_response.json(),use_container_width = True)
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
